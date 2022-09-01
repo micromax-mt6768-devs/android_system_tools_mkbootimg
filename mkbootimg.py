@@ -191,8 +191,7 @@ def write_header(args):
 
     ramdisk_load_address = ((args.base + args.ramdisk_offset)
                             if filesize(args.ramdisk) > 0 else 0)
-    second_load_address = ((args.base + args.second_offset)
-                           if filesize(args.second) > 0 else 0)
+    second_load_address = args.base + args.second_offset
 
     args.output.write(pack(f'{BOOT_MAGIC_SIZE}s', BOOT_MAGIC.encode()))
     # kernel size in bytes
